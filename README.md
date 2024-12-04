@@ -1,16 +1,9 @@
-# x-ray-robot-app - Is the app for nano robot which thanks by this software can classfic's bone fractures on the pictures
+# x-ray-robot-app - Is the app for nano humaidal robot which thanks by this software can classfic's bone fractures on the pictures
 
 &nbsp;
 ## 💡 About the project
 
-- 🙀 Ah, yes, my first AI ( CNN neural network ) - the epitome of innovation and AI in medicine! It's like doctor, but in web app. He could's help you in diagnose different fractures.
-
-- 🔨 This app is project which is small setp in medicine and x-ray tech revolution. 
-
-- 💰 I made sure that the look was good and modern.
-
-- ⏰ Performance and loading times were our main focus, and I've worked hard to let you go and grab snacks when your page loads.
-
+- 🔨 App builded for nano humaidal robot to handle his top camera, diagnose bone fractures by CNN and finally speak answer to human. 
 
 &nbsp;
 ## 🙋‍♂️ workforce
@@ -21,11 +14,4 @@
 
 &nbsp;
 ## 🔨 Tech stack
- <img src="https://skillicons.dev/icons?i=react,typescript,tailwind,css,html,python,fastapi,opencv,tensorflow" />
-
-
-## 🛠️ How to use ?
-
-- Put x-ray picture to box for file `( JPG, PNG, JPEG )`
-- Click in the button `Start Analysis`
-- wait few seconds
+ <img src="https://skillicons.dev/icons?i=promela,xml,python,fastapi,opencv,tensorflow" />
