@@ -14,4 +14,4 @@
 
 &nbsp;
 ## 🔨 Tech stack
- <img src="https://skillicons.dev/icons?i=promela,xml,python,fastapi,opencv,tensorflow" />
+ <img src="https://skillicons.dev/icons?i=python,fastapi,opencv,tensorflow,urllib" />
