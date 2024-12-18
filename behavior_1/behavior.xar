@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ChoregrapheProject xmlns="http://www.ald.softbankrobotics.com/schema/choregraphe/project.xsd" xar_version="3">
+  <Box name="root" id="-1" localization="8" tooltip="Root box of Choregraphe&apos;s behavior. Highest level possible." x="0" y="0">
+    <bitmap>media/images/box/root.png</bitmap>
+    <script language="4">
+      <content>
+        <![CDATA[]]>
+      </content>
+    </script>
+    <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+    <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+    <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+    <Input name="packageInstalled" type="0" type_size="1" nature="4" stm_value_name="packageInstalled" inner="1" tooltip="packageInstalled desc" id="4" />
+    <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="5" />
+    <Timeline enable="0">
+      <BehaviorLayer name="behavior_layer1">
+        <BehaviorKeyframe name="keyframe1" index="1">
+          <Diagram>
+            <Box name="X-RAY-IQ-API" id="1" localization="8" tooltip="Script to sending requests with image package to analysis by neural netowork and get a response" x="496" y="159">
+              <bitmap>../../../../../Users/pawel/Downloads/logo (1).png</bitmap>
+              <script language="4">
+                <content>
+                  <![CDATA[import urllib2
+import mimetypes
+import os
+
+class MyClass(GeneratedClass):
+    def __init__(self):
+        GeneratedClass.__init__(self)
+        self.tts = ALProxy('ALTextToSpeech')
+        self.url = 'http://127.0.0.1:8000/prompt'
+        self.frame_manager = ALProxy('ALFrameManager')
+        self.behavior_path = self.frame_manager.getBehaviorPath(self.behaviorId)
+
+    def onLoad(self):
+        self.img_path = os.path.join(self.behavior_path, 'patho-three.jpg')
+        self.boundary = '----WebKitFormBoundary7MA4YWxkTrZu0gW'
+        self.headers = {
+            'Content-Type': 'multipart/form-data; boundary={}'.format(self.boundary)
+        }
+        pass
+
+    def onInput_onStart(self):
+        try:
+            if not os.path.exists(self.img_path):
+                raise Exception("Image file not found at {}".format(self.img_path))
+
+            body = []
+            body.append("--{}".format(self.boundary))
+            filename = os.path.basename(self.img_path)
+            mimetype = mimetypes.guess_type(self.img_path)[0] or 'application/octet-stream'
+            body.append('Content-Disposition: form-data; name="file"; filename="{}"'.format(filename))
+            body.append('Content-Type: {}'.format(mimetype))
+            body.append('')
+
+
+            with open(self.img_path, 'rb') as img_file:
+                file_data = img_file.read()
+            body.append(file_data)
+            body.append("--{}--".format(self.boundary))
+
+            body_bytes = '\r\n'.join(map(str, body))
+            headers = {
+                'Content-Type': 'multipart/form-data; boundary={}'.format(self.boundary),
+                'Content-Length': str(len(body_bytes))
+            }
+
+            req = urllib2.Request(self.url, data=body_bytes, headers=headers)
+            res = urllib2.urlopen(req)
+            response_data = res.read()
+
+            self.tts.post.say(response_data)
+            self.logger.info(response_data)
+
+        except urllib2.URLError as e:
+            self.logger.error("Error connecting to server.")
+
+        except Exception as e:
+            self.logger.error("Error occurred during processing.")
+
+        # self.onStopped()
+        pass
+
+    def onInput_onStop(self):
+        self.onUnload()  # Czyszczenie zasobów przy zatrzymaniu
+        self.onStopped()  # Odpalenie outputu]]>
+                </content>
+              </script>
+              <Input name="onLoad" type="1" type_size="1" nature="0" inner="1" tooltip="Signal sent when diagram is loaded." id="1" />
+              <Input name="onStart" type="1" type_size="1" nature="2" inner="0" tooltip="Box behavior starts when a signal is received on this input." id="2" />
+              <Input name="onStop" type="1" type_size="1" nature="3" inner="0" tooltip="Box behavior stops when a signal is received on this input." id="3" />
+              <Output name="onStopped" type="1" type_size="1" nature="1" inner="0" tooltip="Signal sent when box behavior is finished." id="4" />
+            </Box>
+            <Link inputowner="1" indexofinput="2" outputowner="0" indexofoutput="2" />
+          </Diagram>
+        </BehaviorKeyframe>
+      </BehaviorLayer>
+    </Timeline>
+  </Box>
+</ChoregrapheProject>
