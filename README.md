@@ -1,4 +1,4 @@
-# x-ray-robot-app - AI app for nano humaidal robot to diagnose bone fractures on x-ray pictures.
+# x-ray-nao-app - AI app for nano humaidal robot to diagnose bone fractures on x-ray pictures.
 
 &nbsp;
 ## 💡 About the project
