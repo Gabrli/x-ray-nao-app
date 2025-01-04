@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<package version="0.0.0" uuid="x-ray-iq-73d911" installOnlyAtStartup="false">
+ <names>
+  <name lang="en_US">X-Ray-IQ</name>
+  <name lang="pl_PL">X-Ray-IQ</name>
+ </names>
+ <supportedLanguages>
+  <language>en_US</language>
+  <language>pl_PL</language>
+ </supportedLanguages>
+ <descriptionLanguages>
+  <language>en_US</language>
+  <language>pl_PL</language>
+ </descriptionLanguages>
+ <contents>
+  <behaviorContent path="behavior_1">
+   <userRequestable/>
+   <nature>interactive</nature>
+   <permissions/>
+  </behaviorContent>
+ </contents>
+</package>
