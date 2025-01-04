@@ -3,7 +3,7 @@
 &nbsp;
 ## 💡 About the project
 
-- 🔨 App builded for nano humaidal robot to handle his top camera, send image to diagnose bone fractures on x-ray pictures by CNN and speak answer to human.
+- 🔨 App builded for nano humaidal robot to h send image to diagnose bone fractures on x-ray pictures by CNN and speak answer to human.
 - 💰 Finally target for this app is useing nano robots with this app in hospitals, clinics or universitys.
 
 &nbsp;
